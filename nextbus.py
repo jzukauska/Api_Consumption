@@ -1,11 +1,15 @@
+from datetime import datetime
+
 import requests
 import json
 import pickle
 from Nextrip import Nextrip
 import argparse
 import sys
+from os import path
 
-debugMode = False
+
+debugMode = True
 
 if not debugMode:
     sys.tracebacklimit = 0
@@ -24,7 +28,21 @@ if __name__ == '__main__':
     stop = args.stop
     direction = args.direction
 
-    bus = Nextrip(route,stop,direction)
+    bus_time = Nextrip(route,stop,direction)
 
+    print(bus_time)
+
+    # cache = None
+    # if path.exists("./cache") and path.getsize("./cache") > 0:
+    #     try:
+    #         cache = pickle.load(open("cache","rb"))
+    #     except:
+    #         print("Error loading cache")
+    #
+    # if cache is not None:
+    #     if (cache.timestamp - datetime.now()).seconds < 30:
+    #         print("Under 30")
+    #
+    #
 
 
