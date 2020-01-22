@@ -23,4 +23,7 @@ class TestNextTrip(unittest.TestCase):
 
         pass
 
-
+    def test_output(self):
+        #assuming good cardinal direction
+        with self.assertRaises(ValueError):
+            N("test","test","north")._Nextrip__get_routes()
