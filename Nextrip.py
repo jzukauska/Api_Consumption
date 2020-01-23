@@ -1,13 +1,11 @@
-from Direction import Direction as D
-
-import json
-
-from util import request_route, request_stop, request_departure
 from datetime import datetime
+
+from Direction import Direction as D
+from util import request_route, request_stop, request_departure
 
 
 class Nextrip():
-    def __init__(self, user_route, user_stop, user_direction):
+    def __init__(self, user_route: str, user_stop: str, user_direction: str):
         self.__route = user_route
         self.__stop = user_stop
         self.__direction = user_direction
@@ -19,8 +17,10 @@ class Nextrip():
         self.__timestamp = None
         self.__departure = None
 
+        self.__run_api_calls()
+
     @staticmethod
-    def __direction_convert(value):
+    def __direction_convert(value) -> int:
         lower = value.lower()
         try:
             direction_number = D[lower].value
@@ -30,10 +30,17 @@ class Nextrip():
         else:
             return direction_number
 
-    # todo remove unneccesary route property
     @property
     def route(self):
         return self.__route
+
+    @property
+    def stop(self):
+        return self.__stop
+
+    @property
+    def direction(self):
+        return self.__direction
 
     def __parse_route(self, json_route):
 
@@ -58,8 +65,6 @@ class Nextrip():
         pass
 
     def __parse_stop(self, json_stop):
-        # for stop in json_stops:
-        #     if self.__stop in
 
         for stop in json_stop:
 
@@ -97,7 +102,6 @@ class Nextrip():
 
             datetime_difference = departure_datetime - datetime.now()
 
-
             return datetime_difference
 
     def __get_departure(self):
@@ -119,8 +123,6 @@ class Nextrip():
         return self.__timestamp
 
     def __str__(self):
-
-        self.__run_api_calls()
 
         if self.__departure is None:
             return ""
