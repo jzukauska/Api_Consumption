@@ -5,7 +5,7 @@ from util import request_route, request_stop, request_departure
 
 
 class Nextrip():
-    def __init__(self, user_route: str, user_stop: str, user_direction: str):
+    def __init__(self, user_route, user_stop, user_direction):
         self.__route = user_route
         self.__stop = user_stop
         self.__direction = user_direction
@@ -20,7 +20,7 @@ class Nextrip():
         self.__run_api_calls()
 
     @staticmethod
-    def __direction_convert(value) -> int:
+    def __direction_convert(value):
         lower = value.lower()
         try:
             direction_number = D[lower].value
