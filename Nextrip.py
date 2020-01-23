@@ -80,7 +80,8 @@ class Nextrip():
         stop_id = self.__parse_stop(stops_json_list)
 
         if stop_id is None:
-            raise ValueError("'{}' and '{}' is not a vaild stop combination".format(self.__route, self.__direction))
+            raise ValueError("'{}' and '{}' is not a vaild stop combination for '{}'"
+                             .format(self.__route, self.__direction, self.__stop))
 
         else:
 
