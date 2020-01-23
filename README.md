@@ -99,7 +99,7 @@ optional arguments:
 ## Test
 * Test can be run with
   ```
-  python -m unittest
+  python -m unittest discover -s ./test
   ```
 * It requires that the test directory shipped with this repository be in the same directory you extracted nextbus.py to in order to test known relative directory schemas.
 
