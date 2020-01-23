@@ -6,7 +6,7 @@ from os import path
 
 from Nextrip import Nextrip
 
-debugMode = True
+debugMode = False
 
 if not debugMode:
     sys.tracebacklimit = 0
